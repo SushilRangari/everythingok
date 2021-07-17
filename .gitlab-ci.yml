@@ -8,7 +8,7 @@ build-job:
 test-job1:
   stage: test
   script:
-    - echo "installed git"
+    - echo "installed git, made entry of svrgitlab on gitlab server to resolve locally"
   tags:
     - dish
 test-job2:
