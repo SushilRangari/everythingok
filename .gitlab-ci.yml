@@ -1,6 +1,7 @@
 build-job:
   stage: build
   script:
+    rm -rf /home/data/*
     - echo "Hieee, $GITLAB_USER_LOGIN!"
   tags:
     - dish2
