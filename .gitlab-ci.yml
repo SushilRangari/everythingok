@@ -1,7 +1,6 @@
 build-job:
   stage: build
   script:
-    - chown -R gitlab-runner:gitlab-runner
     - echo "Hieee, $GITLAB_USER_LOGIN!"
   tags:
     - dish2
