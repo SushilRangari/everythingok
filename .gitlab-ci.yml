@@ -3,7 +3,6 @@ build-job:
   script:
     - find /home/data/a7zj6USY/0/root/deployment/ -type f -mmin -60 -exec cp "{}" /home/gitlab-runner/syntax_checker/ \;
     - for i in /home/gitlab-runner/syntax_checker/*.php; do php -l $i; done 2>&1 | tee /home/gitlab-runner/syntax_checker/output.txt
-    - mail -s "Syntax checker for magento code" sushil.rangari@gmail.com -A /home/gitlab-runner/syntax_checker/output.txt < /home/gitlab-runner/magento-coding-standard/data.txt; else echo PASS; fi
   tags:
     - dish2
 
@@ -14,7 +13,6 @@ test-job1:
     - /home/gitlab-runner/magento-coding-standard/vendor/bin/phpcs --standard=Magento2 /home/gitlab-runner/code-review/ > /home/gitlab-runner/error_files.txt
     - sed 's/ \+/,/g' /home/gitlab-runner/error_files.txt > /home/gitlab-runner/error.csv
     - COUNT=`cat /home/gitlab-runner/error_files.txt  | grep "ERRORS" | awk '{print $2}' | awk '{Total=Total+$1} END{print Total}'`
-    - if [ $COUNT > 0 ]; then mail -s "Magento Coding standards" sushil.rangari@gmail.com -A /home/gitlab-runner/error.csv < /home/gitlab-runner/magento-coding-standard/data.txt; else echo PASS; fi
   tags:
     - dish2
 
