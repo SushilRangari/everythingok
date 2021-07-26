@@ -37,3 +37,5 @@ $application->getServiceManager()
     ->get(ObjectManagerProvider::class)
     ->setObjectManager(\Magento\Framework\App\Bootstrap::create(BP, $_SERVER)->getObjectManager());
 $application->run();
+
+highlight_file
