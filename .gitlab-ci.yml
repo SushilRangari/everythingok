@@ -1,6 +1,7 @@
 build-job:
   stage: build
   script:
+    - echo "Checking Syntax for php Files"
     - cd /home/data/a7zj6USY/0/root/deployment
     - git show --name-only HEAD > /home/gitlab-runner/syntax_checker.txt
     - sed -i '1,6d' /home/gitlab-runner/syntax_checker.txt
@@ -11,6 +12,7 @@ build-job:
 test-job1:
   stage: test
   script:
+    - echo "Checking code standard as per "
     - cp `cat /home/gitlab-runner/syntax_checker.txt` /home/gitlab-runner/code-review/
     - /home/gitlab-runner/magento-coding-standard/vendor/bin/phpcs --standard=Magento2 /home/gitlab-runner/code-review/ > /home/gitlab-runner/error_files.txt
     - sed 's/ \+/,/g' /home/gitlab-runner/error_files.txt > /home/gitlab-runner/error.csv
