@@ -23,6 +23,7 @@ class CommandList
      */
     private $serviceManager;
 
+init_Function
     /**
      * Constructor
      *

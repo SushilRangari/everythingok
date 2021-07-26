@@ -11,7 +11,7 @@ build-job:
 test-job1:
   stage: test
   script:
-    - find /home/data/a7zj6USY/0/root/deployment/ -type f -mmin -280 -mmin +120 -exec cp "{}" /home/gitlab-runner/code-review/ \;
+    - cp `cat /home/gitlab-runner/syntax_checker.txt` /home/gitlab-runner/code-review/
     - /home/gitlab-runner/magento-coding-standard/vendor/bin/phpcs --standard=Magento2 /home/gitlab-runner/code-review/ > /home/gitlab-runner/error_files.txt
     - sed 's/ \+/,/g' /home/gitlab-runner/error_files.txt > /home/gitlab-runner/error.csv
     - COUNT=`cat /home/gitlab-runner/error_files.txt  | grep "ERRORS" | awk '{print $2}' | awk '{Total=Total+$1} END{print Total}'`
