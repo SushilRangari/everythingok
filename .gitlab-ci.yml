@@ -12,7 +12,7 @@ build-job:
 test-job1:
   stage: test
   script:
-    - echo "Checking code standard as per "Coding Standards"
+    - echo "Checking code standard as per "Coding Standards"""
     - cp `cat /home/gitlab-runner/syntax_checker.txt` /home/gitlab-runner/code-review/
     - /home/gitlab-runner/magento-coding-standard/vendor/bin/phpcs --standard=Magento2 /home/gitlab-runner/code-review/ > /home/gitlab-runner/error_files.txt
     - sed 's/ \+/,/g' /home/gitlab-runner/error_files.txt > /home/gitlab-runner/error.csv
