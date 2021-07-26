@@ -1,8 +1,10 @@
 build-job:
   stage: build
   script:
-    - find /home/data/a7zj6USY/0/root/deployment/ -type f -mmin -60 -exec cp "{}" /home/gitlab-runner/syntax_checker/ \;
-    - for i in /home/gitlab-runner/syntax_checker/*.php; do php -l $i; done 2>&1 | tee /home/gitlab-runner/syntax_checker/output.txt
+    - cd /home/data/a7zj6USY/0/root/deployment
+    - git show --name-only HEAD > /home/gitlab-runner/syntax_checker.txt
+    - sed '1,6d' /home/gitlab-runner/syntax_checker.txt
+    - for i in `cat /home/gitlab-runner/syntax_checker.txt` ; do php -l $i; done 2>&1 | tee /home/gitlab-runner/syntax_checker/output.txt
   tags:
     - dish2
 
