@@ -1,5 +1,10 @@
-build-job:
-  stage: build
+stages:
+  - syntaxchecker
+  - codeaudit
+  - unittest
+
+syntax_checker:
+  stage: syntaxchecker
   script:
     - echo "Checking Syntax for php Files"
     - cd /home/data/a7zj6USY/0/root/deployment
@@ -9,8 +14,8 @@ build-job:
   tags:
     - dish2
 
-test-job1:
-  stage: test
+code_audit:
+  stage: codeaudit
   script:
     - echo "Checking code standard as per "Coding Standards""
     - cp `cat /home/gitlab-runner/syntax_checker.txt` /home/gitlab-runner/code-review/
@@ -20,8 +25,8 @@ test-job1:
   tags:
     - dish2
 
-deploy-prod:
-  stage: deploy
+Unit_test:
+  stage: unittest
   script:
     - echo "This job deploys something from the $CI_COMMIT_BRANCH branch."
   tags:
