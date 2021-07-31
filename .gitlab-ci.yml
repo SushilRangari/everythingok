@@ -18,7 +18,7 @@ code_audit:
   stage: codeaudit
   script:
     - echo "Checking code standard as per "Coding Standards""
-    - cp `cat /home/gitlab-runner/syntax_checker.txt` /home/gitlab-runner/code-review/
+    - cp --parents `cat /home/gitlab-runner/syntax_checker.txt` /home/gitlab-runner/code-review/
     - /home/gitlab-runner/magento-coding-standard/vendor/bin/phpcs --standard=Magento2 /home/gitlab-runner/code-review/ > /home/gitlab-runner/error_files.txt
     - sed 's/ \+/,/g' /home/gitlab-runner/error_files.txt > /home/gitlab-runner/error.csv
     - COUNT=`cat /home/gitlab-runner/error_files.txt  | grep "ERRORS" | awk '{print $2}' | awk '{Total=Total+$1} END{print Total}'`
