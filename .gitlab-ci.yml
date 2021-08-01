@@ -1,7 +1,7 @@
-#stages:
-#  - syntaxchecker
+stages:
+  - syntaxchecker
 #  - codeaudit
-#  - unittest
+  - unittest
 
 syntax_checker:
   stage: syntaxchecker
@@ -13,18 +13,17 @@ syntax_checker:
     - for i in `cat /home/gitlab-runner/syntax_checker.txt` ; do php -l $i; done 2>&1 | tee /home/gitlab-runner/syntax_checker/output.txt
   tags:
     - dish2
-
-code_audit:
-  stage: codeaudit
-  script:
-    - echo "Checking code standard as per "Coding Standards""
-    - cp --parents `cat /home/gitlab-runner/syntax_checker.txt` /home/gitlab-runner/code-review/
-    - /home/gitlab-runner/magento-coding-standard/vendor/bin/phpcs --standard=Magento2 /home/gitlab-runner/code-review/ > /home/gitlab-runner/error_files.txt
-    - sed 's/ \+/,/g' /home/gitlab-runner/error_files.txt > /home/gitlab-runner/error.csv
-    - VALUE=0
-    - SIZE=`du -s /home/gitlab-runner/error_files.txt | awk '{print $1}'`; if [ $SIZE -eq $VALUE ]; then echo "Code Audit PASSED"; else COUNT=`cat /home/gitlab-runner/error_files.txt  | grep "ERRORS" | awk '{print $2}' | awk '{Total=Total+$1} END{print Total}'`; fi;
-  tags:
-    - dish2
+#code_audit:
+#  stage: codeaudit
+#  script:
+#    - echo "Checking code standard as per "Coding Standards""
+#    - cp --parents `cat /home/gitlab-runner/syntax_checker.txt` /home/gitlab-runner/code-review/
+#    - /home/gitlab-runner/magento-coding-standard/vendor/bin/phpcs --standard=Magento2 /home/gitlab-runner/code-review/ > /home/gitlab-runner/error_files.txt
+#    - sed 's/ \+/,/g' /home/gitlab-runner/error_files.txt > /home/gitlab-runner/error.csv
+#    - VALUE=0
+#    - SIZE=`du -s /home/gitlab-runner/error_files.txt | awk '{print $1}'`; if [ $SIZE -eq $VALUE ]; then echo "Code Audit PASSED"; else COUNT=`cat /home/gitlab-runner/error_files.txt  | grep "ERRORS" | awk '{print $2}' | awk '{Total=Total+$1} END{print Total}'`; fi;
+#  tags:
+#    - dish2
 
 Unit_test:
   stage: unittest
