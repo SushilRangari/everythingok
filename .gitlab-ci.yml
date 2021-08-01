@@ -1,6 +1,12 @@
-build-job:
-  stage: build
+stages:
+  - syntaxchecker
+  - codeaudit
+  - unittest
+
+syntax_checker:
+  stage: syntaxchecker
   script:
+    - echo "Checking Syntax for php Files"
     - cd /home/data/a7zj6USY/0/root/deployment
     - git show --name-only HEAD > /home/gitlab-runner/syntax_checker.txt
     - sed -i '1,6d' /home/gitlab-runner/syntax_checker.txt
@@ -8,9 +14,10 @@ build-job:
   tags:
     - dish2
 
-test-job1:
-  stage: test
+code_audit:
+  stage: codeaudit
   script:
+    - echo "Checking code standard as per "Coding Standards""
     - cp `cat /home/gitlab-runner/syntax_checker.txt` /home/gitlab-runner/code-review/
     - /home/gitlab-runner/magento-coding-standard/vendor/bin/phpcs --standard=Magento2 /home/gitlab-runner/code-review/ > /home/gitlab-runner/error_files.txt
     - sed 's/ \+/,/g' /home/gitlab-runner/error_files.txt > /home/gitlab-runner/error.csv
@@ -18,8 +25,8 @@ test-job1:
   tags:
     - dish2
 
-deploy-prod:
-  stage: deploy
+Unit_test:
+  stage: unittest
   script:
     - echo "This job deploys something from the $CI_COMMIT_BRANCH branch."
   tags:
