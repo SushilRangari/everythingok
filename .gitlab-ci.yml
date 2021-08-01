@@ -21,7 +21,8 @@ code_audit:
     - cp --parents `cat /home/gitlab-runner/syntax_checker.txt` /home/gitlab-runner/code-review/
     - /home/gitlab-runner/magento-coding-standard/vendor/bin/phpcs --standard=Magento2 /home/gitlab-runner/code-review/ > /home/gitlab-runner/error_files.txt
     - sed 's/ \+/,/g' /home/gitlab-runner/error_files.txt > /home/gitlab-runner/error.csv
-    - if [ $? -eq 0 ]; then COUNT=`cat /home/gitlab-runner/error_files.txt  | grep "ERRORS" | awk '{print $2}' | awk '{Total=Total+$1} END{print Total}'`; else echo "All Good for code standards"; fi
+    - cat /home/gitlab-runner/error_files.txt  | grep "ERRORS"
+    - if [ $? -eq 0 ]; then COUNT=`cat /home/gitlab-runner/error_files.txt  | grep "ERRORS" | awk '{print $2}' | awk '{Total=Total+$1} END{print Total}'`; else echo "All Good!"; fi
   tags:
     - dish2
 
