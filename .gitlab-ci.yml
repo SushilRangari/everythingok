@@ -29,7 +29,7 @@ Unit_test:
   stage: unittest
   script:
     - /bin/cp /home/gitlab-runner/unit-testing/phpunit.xml /home/data/a7zj6USY/0/root/deployment/dev/tests/unit/phpunit.xml
-    - /home/data/a7zj6USY/0/root/deployment/vendor/bin/phpunit -c /home/data/a7zj6USY/0/root/deployment/dev/tests/unit/phpunit.xml > /home/gitlab-runner/unit-testing/testdata.txt;if [ $? -eq 0 ]; then echo "Unit Test PASSED"; else sed '/^\./d' /home/gitlab-runner/unit-testing/testdata.txt > /home/gitlab-runner/unit-testing/sed_command_to_remove_uwnated_characters.txt
+    - /home/data/a7zj6USY/0/root/deployment/vendor/bin/phpunit -c /home/data/a7zj6USY/0/root/deployment/dev/tests/unit/phpunit.xml > /home/gitlab-runner/unit-testing/testdata.txt;if [ $? -eq 0 ]; then echo "Unit Test PASSED"; else sed '/^\./d' /home/gitlab-runner/unit-testing/testdata.txt > /home/gitlab-runner/unit-testing/sed_command_to_remove_uwnated_characters.txt;fi
     - sed '2,4d' /home/gitlab-runner/unit-testing/sed_command_to_remove_uwnated_characters.txt > /home/gitlab-runner/unit-testing/sed_command_to_remove_top2_4lines.txt
     - echo "Unit Test Details Sent to Dev Team"
   tags:
