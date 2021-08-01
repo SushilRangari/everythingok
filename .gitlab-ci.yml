@@ -1,7 +1,7 @@
-stages:
-  - syntaxchecker
-  - codeaudit
-  - unittest
+#stages:
+#  - syntaxchecker
+#  - codeaudit
+#  - unittest
 
 syntax_checker:
   stage: syntaxchecker
