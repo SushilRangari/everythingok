@@ -23,7 +23,6 @@ use Laminas\ServiceManager\ServiceLocatorInterface;
 use Laminas\Stdlib\RequestInterface;
 use Laminas\Uri\UriInterface;
 
-unix:8080
 /**
  * A listener that injects relevant Magento initialization parameters and initializes filesystem
  *

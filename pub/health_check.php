@@ -9,7 +9,6 @@
  * phpcs:disable Squiz.Functions.GlobalFunction
  */
 use Magento\Framework\Config\ConfigOptionsListConstants;
-Echo hi
 
 // phpcs:ignore Magento2.Functions.DiscouragedFunction
 register_shutdown_function("fatalErrorHandler");

@@ -17,7 +17,6 @@ use Laminas\ServiceManager\ServiceManager;
  */
 class Application
 {
-	echo "hi"
     /**
      * Creates \Laminas\Mvc\Application and bootstrap it.
      * This method is similar to \Laminas\Mvc\Application::init but allows to load
