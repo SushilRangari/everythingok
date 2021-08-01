@@ -28,7 +28,8 @@ syntax_checker:
 Unit_test:
   stage: unittest
   script:
-    - /home/data/a7zj6USY/0/root/deployment/vendor/bin/phpunit -c dev/tests/unit/phpunit.xml > /home/gitlab-runner/unit-testing/testdata.txt
+    - /bin/cp /home/gitlab-runner/unit-testing/phpunit.xml /home/data/a7zj6USY/0/root/deployment/dev/tests/unit/phpunit.xml
+    - /home/data/a7zj6USY/0/root/deployment/vendor/bin/phpunit -c /home/data/a7zj6USY/0/root/deployment/dev/tests/unit/phpunit.xml > /home/gitlab-runner/unit-testing/testdata.txt
     - sed '/^\./d' test.txt > /home/gitlab-runner/unit-testing/sed_command_to_remove_uwnated_characters.txt
     - sed '2,4d' /home/gitlab-runner/unit-testing/sed_command_to_remove_top2_4lines.txt
     - echo "Unit Test Completed"
