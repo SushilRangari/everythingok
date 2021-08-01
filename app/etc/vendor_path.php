@@ -3,5 +3,3 @@
  * Path to Composer vendor directory
  */
 return './vendor';
-
-Echo:"
