@@ -1,16 +1,18 @@
 stages:
   - syntaxchecker
 #  - codeaudit
-  - unittest
+# - unittest
 
 syntax_checker:
   stage: syntaxchecker
   script:
     - echo "Checking Syntax for php Files"
-    - cd /home/data/a7zj6USY/0/root/deployment
-    - git show --name-only HEAD > /home/gitlab-runner/syntax_checker.txt
-    - sed -i '1,6d' /home/gitlab-runner/syntax_checker.txt
-    - for i in `cat /home/gitlab-runner/syntax_checker.txt` ; do php -l $i; done 2>&1 | tee /home/gitlab-runner/syntax_checker/output.txt
+  only:
+    - merge_requests
+#    - cd /home/data/a7zj6USY/0/root/deployment
+#    - git show --name-only HEAD > /home/gitlab-runner/syntax_checker.txt
+#    - sed -i '1,6d' /home/gitlab-runner/syntax_checker.txt
+#    - for i in `cat /home/gitlab-runner/syntax_checker.txt` ; do php -l $i; done 2>&1 | tee /home/gitlab-runner/syntax_checker/output.txt
   tags:
     - dish2
 #code_audit:
@@ -25,14 +27,14 @@ syntax_checker:
 #  tags:
 #    - dish2
 
-Unit_test:
-  stage: unittest
-  script:
-    - /bin/cp /home/gitlab-runner/unit-testing/phpunit.xml /home/data/a7zj6USY/0/root/deployment/dev/tests/unit/phpunit.xml
-    - /home/data/a7zj6USY/0/root/deployment/vendor/bin/phpunit -c /home/data/a7zj6USY/0/root/deployment/dev/tests/unit/phpunit.xml > /home/gitlab-runner/unit-testing/testdata.txt 2>&1
-    - exitcode=$?
-    - if [ exitcode -ge 1 ]; then sed '/^\./d' /home/gitlab-runner/unit-testing/testdata.txt > /home/gitlab-runner/unit-testing/sed_command_to_remove_uwnated_characters.txt; else "Unit Test Passed";fi
-    - sed '2,4d' /home/gitlab-runner/unit-testing/sed_command_to_remove_uwnated_characters.txt > /home/gitlab-runner/unit-testing/sed_command_to_remove_top2_4lines.txt
-    - echo "Unit Test Details Sent to Dev Team"
-  tags:
-    - dish2
+#Unit_test:
+#  stage: unittest
+#  script:
+#    - /bin/cp /home/gitlab-runner/unit-testing/phpunit.xml /home/data/a7zj6USY/0/root/deployment/dev/tests/unit/phpunit.xml
+#    - /home/data/a7zj6USY/0/root/deployment/vendor/bin/phpunit -c /home/data/a7zj6USY/0/root/deployment/dev/tests/unit/phpunit.xml > /home/gitlab-runner/unit-testing/testdata.txt 2>&1
+#    - exitcode=$?
+#    - if [ exitcode -ge 1 ]; then sed '/^\./d' /home/gitlab-runner/unit-testing/testdata.txt > /home/gitlab-runner/unit-testing/sed_command_to_remove_uwnated_characters.txt; else "Unit Test Passed";fi
+    - sed '2,4d' /home/gitlab-runner/unit-testing/sed_command_to_remove_uwnated_characters.txt > /home/gitlab-runner/unit-testing/#sed_command_to_remove_top2_4lines.txt
+#    - echo "Unit Test Details Sent to Dev Team"
+#  tags:
+#    - dish2
