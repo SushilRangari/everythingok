@@ -10,6 +10,7 @@ Deploycode:
     - git fetch origin
     - git checkout -B feature origin/feature
     - git remote add Dev http://root:12345678@svrgitlab.com/root/localtest
+    - git pull Dev feature
     - git push Dev feature:feature
   tags:
     - dish2
