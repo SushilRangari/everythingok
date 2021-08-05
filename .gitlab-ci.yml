@@ -8,9 +8,9 @@ Deploycode:
   stage: Deploycode
   script:
     - git fetch origin
-    - git checkout -B feature origin/feature
+    - git checkout -B main origin/main
     #- git remote add Dev http://root:12345678@svrgitlab.com/root/localtest
-    - git pull Dev feature
-    - git push Dev feature:feature
+    - git pull Dev main
+    - git push Dev main:main
   tags:
     - dish2
