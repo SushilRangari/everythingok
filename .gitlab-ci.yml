@@ -10,7 +10,7 @@ Deploycode:
     - git fetch origin
     - git checkout -B main origin/main
     #- git remote add Dev http://root:12345678@svrgitlab.com/root/localtest
-    - git pull Dev main
+    - git pull Dev main --allow-unrelated-histories
     - git push Dev main:main
   tags:
     - dish2
