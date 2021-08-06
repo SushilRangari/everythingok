@@ -22,6 +22,8 @@ code_audit:
     - sed 's/ \+/,/g' /home/gitlab-runner/error_files.txt > /home/gitlab-runner/error.csv
     - VALUE=0
     - SIZE=`du -s /home/gitlab-runner/error_files.txt | awk '{print $1}'`; if [ $SIZE -eq $VALUE ]; then echo "Code Audit PASSED"; else COUNT=`cat /home/gitlab-runner/error_files.txt  | grep "ERRORS" | awk '{print $2}' | awk '{Total=Total+$1} END{print Total}'`; fi;
+  allow_failure:
+    exit_codes: 37
   tags:
     - dish2
 
