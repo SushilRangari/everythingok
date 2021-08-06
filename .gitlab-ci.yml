@@ -11,6 +11,9 @@ syntax_checker:
     - git show --name-only HEAD > /home/gitlab-runner/syntax_checker.txt
     - sed -i '1,6d' /home/gitlab-runner/syntax_checker.txt
     - for i in `cat /home/gitlab-runner/syntax_checker.txt` ; do php -l $i; done 2>&1 | tee /home/gitlab-runner/syntax_checker/output.txt
+  allow_failure:
+    exit_codes:
+      - 1
   tags:
     - dish2
 code_audit:
