@@ -37,5 +37,8 @@ Unit_test:
     - if [ exitcode -ge 1 ]; then sed '/^\./d' /home/gitlab-runner/unit-testing/testdata.txt > /home/gitlab-runner/unit-testing/sed_command_to_remove_uwnated_characters.txt; else "Unit Test Passed";fi
     - sed '2,4d' /home/gitlab-runner/unit-testing/sed_command_to_remove_uwnated_characters.txt > /home/gitlab-runner/unit-testing/sed_command_to_remove_top2_4lines.txt
     - echo "Unit Test Details Sent to Dev Team"
+  allow_failure:
+    exit_codes:
+      - 1
   tags:
     - dish2
