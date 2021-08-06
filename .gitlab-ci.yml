@@ -4,7 +4,7 @@
 #  - unittest
 
 syntax_checker:
-  stage: syntaxchecker
+  #stage: syntaxchecker
   script:
     - echo "Checking Syntax for php Files"
   only:
@@ -16,7 +16,7 @@ syntax_checker:
   tags:
     - dish2
 code_audit:
-  stage: codeaudit
+  #stage: codeaudit
   script:
     - echo "Checking code standard as per "Coding Standards""
     - cp --parents `cat /home/gitlab-runner/syntax_checker.txt` /home/gitlab-runner/code-review/
@@ -28,7 +28,7 @@ code_audit:
     - dish2
 
 Unit_test:
-  stage: unittest
+  #stage: unittest
   script:
     - /bin/cp /home/gitlab-runner/unit-testing/phpunit.xml /home/data/a7zj6USY/0/root/deployment/dev/tests/unit/phpunit.xml
     - /home/data/a7zj6USY/0/root/deployment/vendor/bin/phpunit -c /home/data/a7zj6USY/0/root/deployment/dev/tests/unit/phpunit.xml > /home/gitlab-runner/unit-testing/testdata.txt 2>&1
