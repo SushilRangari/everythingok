@@ -1,7 +1,7 @@
 stages:
  - syntaxchecker
  - codeaudit
- #- unittest
+ - unittest
 
 syntax_checker:
   stage: syntaxchecker
@@ -26,7 +26,7 @@ code_audit:
     - dish2
 
 Unit_test:
-  #stage: unittest
+  stage: unittest
   script:
     - /bin/cp /home/gitlab-runner/unit-testing/phpunit.xml /home/data/a7zj6USY/0/root/deployment/dev/tests/unit/phpunit.xml
     - /home/data/a7zj6USY/0/root/deployment/vendor/bin/phpunit -c /home/data/a7zj6USY/0/root/deployment/dev/tests/unit/phpunit.xml > /home/gitlab-runner/unit-testing/testdata.txt 2>&1
