@@ -10,7 +10,8 @@ syntax_checker:
     - cd /home/data/a7zj6USY/0/root/deployment
     - git show --name-only HEAD > /home/gitlab-runner/syntax_checker.txt
     - sed -i '1,6d' /home/gitlab-runner/syntax_checker.txt
-    - for i in `cat /home/gitlab-runner/syntax_checker.txt` ; do php -l $i; done > /home/gitlab-runner/syntax_checker/output.txt
+    - for i in `cat /home/gitlab-runner/syntax_checker.txt` ; do php -l $i; done 2>&1 | tee /home/gitlab-runner/syntax_checker/output.txt || FAILED=true
+    - if [ $FAILED ]; then echo "Files having syntax errors 
     - cat /home/gitlab-runner/syntax_checker/output.txt
   tags:
     - dish2
