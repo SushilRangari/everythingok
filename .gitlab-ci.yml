@@ -17,6 +17,8 @@ syntax_checker:
     - dish2
 code_audit:
   stage: codeaudit
+  variables:
+    GIT_STRATEGY: none
   script:
     - echo "Checking code standard as per "Magento Coding Standards""
     - cp --parents `cat /home/gitlab-runner/syntax_checker.txt` /home/gitlab-runner/code-review/
@@ -31,6 +33,8 @@ code_audit:
 
 Unit_test:
   stage: unittest
+  variables:
+    GIT_STRATEGY: none
   script:
     - /bin/cp /home/gitlab-runner/unit-testing/phpunit.xml /home/data/a7zj6USY/0/root/deployment/dev/tests/unit/phpunit.xml
     - /home/data/a7zj6USY/0/root/deployment/vendor/bin/phpunit -c /home/data/a7zj6USY/0/root/deployment/dev/tests/unit/phpunit.xml > /home/gitlab-runner/unit-testing/testdata.txt || FAILED=true
