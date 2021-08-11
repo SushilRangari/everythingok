@@ -21,7 +21,7 @@ try {
 </div>
 HTML;
     exit(1);
-}
+
 
 $bootstrap = Bootstrap::create(BP, $_SERVER);
 /** @var \Magento\Framework\App\Http $app */
