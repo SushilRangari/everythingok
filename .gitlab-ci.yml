@@ -5,7 +5,7 @@ build-job:
   tags:
     - dish2
   only:
-    - /v1\/release\.*
+    - /v1\/release\
 
 test-job1:
   stage: test
@@ -14,7 +14,7 @@ test-job1:
   tags:
     - dish2
   only:
-    - /v1\/release\.*
+    - /v1\/release\
 test-job2:
   stage: test
   script:
@@ -25,7 +25,7 @@ test-job2:
   tags:
     - dish2
   only:
-    - /v1\/release\.*
+    - /v1\/release\
 deploy-prod:
   stage: deploy
   script:
