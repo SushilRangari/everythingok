@@ -6,8 +6,8 @@ build-job:
     - echo "Hieee, $GITLAB_USER_LOGIN!"
   tags:
     - dish2
-  #only:
-  #  - /20*\./*\./*\./DEVRELEASE\./***\
+  only:
+    - /*\./*\./*\./DEVRELEASE\./*\
     
 test-job1:
   stage: test
@@ -16,7 +16,7 @@ test-job1:
   tags:
     - dish2
   only:
-    - /20*\./*\./*\./DEVRELEASE\./***\
+    - /*\./*\./*\./DEVRELEASE\./*\
     
 test-job2:
   stage: test
@@ -27,7 +27,7 @@ test-job2:
   tags:
     - dish2
   only:
-    - /20*\./*\./*\./DEVRELEASE\./***\
+    - /*\./*\./*\./DEVRELEASE\./*\
     
 deploy-prod:
   stage: deploy
