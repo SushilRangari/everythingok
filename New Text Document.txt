@@ -7,6 +7,3 @@ with tag
 tag test23
 ok
 then
-hmm
-hmm
-
