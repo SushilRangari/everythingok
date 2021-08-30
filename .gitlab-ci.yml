@@ -13,6 +13,8 @@ syntax_checker:
     - for i in `cat /home/gitlab-runner/syntax_checker.txt` ; do php -l $i; done 2>&1 | tee /home/gitlab-runner/syntax_checker/output.txt || FAILED=true
     - if [ $FAILED ]; then echo "Files having syntax errors";fi
     - cat /home/gitlab-runner/syntax_checker/output.txt
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^\d+\.\d+\.DEV01/'
   tags:
     - dish2
 code_audit:
@@ -28,6 +30,8 @@ code_audit:
     - SIZE=`du -s /home/gitlab-runner/error_files.txt | awk '{print $1}'`;
     - if [ $SIZE -eq $VALUE ]; then echo "Code Audit PASSED"; else COUNT=`cat /home/gitlab-runner/error_files.txt  | grep "ERRORS" | awk '{print $2}' | awk '{Total=Total+$1} END{print Total}'`; fi;
     - echo "Code Audit Failed with $COUNT number of Errors"
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^\d+\.\d+\.DEV01/'
   tags:
     - dish2
 
@@ -41,5 +45,7 @@ Unit_test:
     - if [ $FAILED ]; then sed '/^\./d' /home/gitlab-runner/unit-testing/testdata.txt > /home/gitlab-runner/unit-testing/sed_command_to_remove_uwnated_characters.txt;fi
     - sed '2,4d' /home/gitlab-runner/unit-testing/sed_command_to_remove_uwnated_characters.txt > /home/gitlab-runner/unit-testing/sed_command_to_remove_top2_4lines.txt
     - echo "Unit Test Details Sent to Dev Team"
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^\d+\.\d+\.DEV01/'
   tags:
     - dish2
