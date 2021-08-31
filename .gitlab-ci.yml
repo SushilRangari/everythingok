@@ -28,6 +28,7 @@ test-job2:
     - dish2
   only:
     - /20*\./*\./*\./DEVRELEASE\./***\
+    
 deploy-prod:
   stage: deploy
   script:
