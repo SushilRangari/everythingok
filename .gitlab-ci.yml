@@ -13,8 +13,7 @@ test-job1:
     - echo "installed git, made entry of svrgitlab on gitlab server to resolve locally"
   tags:
     - dish2
-  only:
-    - /v1\/release\
+    
 test-job2:
   stage: test
   script:
