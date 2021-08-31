@@ -35,4 +35,4 @@ deploy-prod:
   tags:
     - dish2
   only:
-    - /v1/release/
+    - /v1\/release\
