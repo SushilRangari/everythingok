@@ -7,7 +7,7 @@ build-job:
   tags:
     - dish2
   only:
-    - /30*\./*\./*\./DEVRELEASE\./***\
+    - /20*\./*\./*\./DEVRELEASE\./***\
     
 test-job1:
   stage: test
@@ -16,7 +16,7 @@ test-job1:
   tags:
     - dish2
   only:
-    - /30*\./*\./*\./DEVRELEASE\./***\
+    - /20*\./*\./*\./DEVRELEASE\./***\
     
 test-job2:
   stage: test
@@ -27,7 +27,7 @@ test-job2:
   tags:
     - dish2
   only:
-    - /30*\./*\./*\./DEVRELEASE\./***\
+    - /20*\./*\./*\./DEVRELEASE\./***\
 deploy-prod:
   stage: deploy
   script:
