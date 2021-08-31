@@ -1,7 +1,7 @@
 build-job:
   stage: build
-  rules:
-    - if: $CI_COMMIT_TAG
+  #rules:
+  #  - if: $CI_COMMIT_TAG
   script:
     - echo "Hieee, $GITLAB_USER_LOGIN!"
   tags:
@@ -24,7 +24,7 @@ test-job2:
   tags:
     - dish2
   only:
-    - /v1\/release\
+    - /.\d+\.\d+\.\d+$/
 deploy-prod:
   stage: deploy
   script:
