@@ -7,7 +7,6 @@ build-job:
   except:
     - main
     - feature
-    - origin/feature  
   tags:
     - dish2
   
@@ -20,6 +19,7 @@ test-job1:
   only:
     variables:
       - $CI_COMMIT_MESSAGE =~/((DEVRELEASE))/
+      
 Test-job2:
   stage: test
   script:
