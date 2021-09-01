@@ -31,7 +31,6 @@ Test-job2:
   #only:
     #- /*\./*\./*\./DEVRELEASE\./*\
 
-    
 deploy-prod:
   stage: deploy
   script:
