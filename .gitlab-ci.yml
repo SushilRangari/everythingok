@@ -19,7 +19,6 @@ test-job1:
   only:
     variables:
       - $CI_COMMIT_MESSAGE =~/((DEVRELEASE))/
-      
 Test-job2:
   stage: test
   script:
