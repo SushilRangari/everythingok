@@ -4,11 +4,11 @@ build-job:
   #  - if: $CI_COMMIT_TAG
   script:
     - echo "Hieee, $GITLAB_USER_LOGIN!"
-  tags:
-    - dish2
   only:
     - /20**\./**\./**\./DEVRELEASE\./****\
-    
+  tags:
+    - dish2
+  
 test-job1:
   stage: test
   script:
