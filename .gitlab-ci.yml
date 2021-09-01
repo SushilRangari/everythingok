@@ -7,7 +7,7 @@ build-job:
   tags:
     - dish2
   only:
-    - /*\./*\./*\./DEVRELEASE\./*\
+    - /20**\./**\./**\./DEVRELEASE\./****\
     
 test-job1:
   stage: test
