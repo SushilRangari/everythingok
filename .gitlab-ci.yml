@@ -23,7 +23,7 @@ test-job1:
     variables:
       - $CI_COMMIT_MESSAGE =~/((DEVRELEASE))/
     
-test-job2:
+Test-job2:
   stage: test
   script:
     - echo "This job tests something, but takes more time than test-job1."
