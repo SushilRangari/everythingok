@@ -5,8 +5,11 @@ build-job:
   script:
     - echo "Hieee, $GITLAB_USER_LOGIN!"
   only:
-    - origin/release
     - tags
+  except:
+    - main
+    - feature
+    - origin/feature  
   tags:
     - dish2
   
