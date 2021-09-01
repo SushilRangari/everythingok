@@ -22,7 +22,6 @@ test-job1:
       - tags
     variables:
       - $CI_COMMIT_MESSAGE =~/((DEVRELEASE))/
-    
 Test-job2:
   stage: test
   script:
