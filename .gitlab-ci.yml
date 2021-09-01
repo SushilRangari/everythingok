@@ -5,7 +5,7 @@ build-job:
   script:
     - echo "Hieee, $GITLAB_USER_LOGIN!"
   only:
-    - /20**\./**\./**\./DEVRELEASE\./****\
+    - /20**\./**\./**\./DEVRELEASE\./****
   tags:
     - dish2
   
