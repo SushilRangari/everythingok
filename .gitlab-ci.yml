@@ -20,7 +20,8 @@ test-job1:
   tags:
     - dish2
   only:
-    - /*\./*\./*\./DEVRELEASE\./*\
+   variables:
+    - $CI_COMMIT_MESSAGE =~/((DEVRELEASE))/
     
 test-job2:
   stage: test
