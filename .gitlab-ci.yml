@@ -20,8 +20,10 @@ test-job1:
   tags:
     - dish2
   only:
-   variables:
-    - $CI_COMMIT_MESSAGE =~/((DEVRELEASE))/
+    refs:
+      - tags
+    variables:
+      - $CI_COMMIT_MESSAGE =~/((DEVRELEASE))/
     
 test-job2:
   stage: test
