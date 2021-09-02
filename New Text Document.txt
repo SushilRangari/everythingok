@@ -13,5 +13,3 @@ tag 27
 with new tag
 normal
 stackoverflow2
-ST1
-ST2
