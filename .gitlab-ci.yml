@@ -23,12 +23,10 @@ Test-job2:
   stage: test
   script:
     - echo "This job tests something, but takes more time than test-job1."
-  only:
-    - /.*(?<!.DEV01)$/I
+  rules:
+    - if: '$CI_COMMIT_TAG =~ /^\d+\.\d+\.\d+\.DEVRELEASE\.\d+$/'
   tags:
     - dish2
-  #only:
-    #- /*\./*\./*\./DEVRELEASE\./*\
 
 deploy-prod:
   stage: deploy
