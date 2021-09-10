@@ -1,7 +1,6 @@
 adfaf aasa
 ok
 stream2Mainupdated
-<<<<<<< HEAD
 autttt
 5566
 adsf
@@ -18,4 +17,4 @@ okkk test
 p
 auto
 Localtest
->>>>>>> feature
+
