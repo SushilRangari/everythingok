@@ -1,6 +1,7 @@
 adfaf aasa
 ok
 stream2Mainupdated
+<<<<<<< HEAD
 autttt
 5566
 adsf
@@ -13,3 +14,8 @@ ok.. reverting
 ikj
 with tag
 okkk test
+=======
+p
+auto
+Localtest
+>>>>>>> feature
