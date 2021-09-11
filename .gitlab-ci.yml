@@ -5,12 +5,7 @@
   #rules:
     #- if: '$CI_COMMIT_TAG =~ /^\d+\.\d+\.DEV01\$/'
 
- test:
-  stage: sonar
-  script:
-    - echo "Hieee, $GITLAB_USER_LOGIN!"
-  #rules:
-    #- if: '$CI_COMMIT_TAG =~ /^\d+\.\d+\.DEV01/'
+ Sonarcheck:
   variables:
     SONAR_TOKEN: $SONAR_TOKEN
     SONAR_HOST_URL: $SONAR_HOST_URL
