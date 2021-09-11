@@ -1,9 +1,28 @@
-build-job:
-  stage: build
+#build-job:
+  #stage: build
+  #script:
+    #- echo "Hieee, $GITLAB_USER_LOGIN!"
+  #rules:
+    #- if: '$CI_COMMIT_TAG =~ /^\d+\.\d+\.DEV01\$/'
+
+ CodeCheck:
+  stage: sonar
   script:
     - echo "Hieee, $GITLAB_USER_LOGIN!"
-  rules:
-    - if: '$CI_COMMIT_TAG =~ /^\d+\.\d+\.DEV01\$/'
+  #rules:
+    #- if: '$CI_COMMIT_TAG =~ /^\d+\.\d+\.DEV01/'
+  variables:
+    SONAR_TOKEN: $SONAR_TOKEN
+    SONAR_HOST_URL: $SONAR_HOST_URL
+    SONAR_USER_HOME: "${CI_PROJECT_DIR}/.sonar"  # Defines the location of the analysis task cache
+    GIT_DEPTH: "0"  # Tells git to fetch all the branches of the project, required by the analysis task
+  cache:
+    key: "${CI_JOB_NAME}"
+    paths:
+      - .sonar/cache
+  script: 
+    - sonar-scanner
+  allow_failure: false   
   tags:
     - dish2
   
