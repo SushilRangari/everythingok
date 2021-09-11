@@ -17,8 +17,7 @@
     paths:
       - .sonar/cache
   script: 
-    - sonar-scanner \
-        -Dsonar.qualitygate.wait=true
+    - sonar-scanner
   allow_failure: false   
   tags:
     - dish2
