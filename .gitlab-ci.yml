@@ -14,7 +14,9 @@
       - .sonar/cache
   script: 
     - bash /home/gitlab-runner/sonar-scanner.sh
-  allow_failure: false   
+  allow_failure: false
+  only:
+    - origin/release
   tags:
     - dish2
   
