@@ -6,7 +6,6 @@ stages:
 syntax_checker:
   stage: syntaxchecker
   script:
-<<<<<<< HEAD
     - echo "Checking Syntax for php Files"
     - cd /home/data/a7zj6USY/0/root/deployment
     - git show --name-only HEAD > /home/gitlab-runner/syntax_checker.txt
@@ -16,13 +15,6 @@ syntax_checker:
     - cat /home/gitlab-runner/syntax_checker/output.txt
   rules:
     - if: '$CI_COMMIT_TAG =~ /^\d+\.\d+\.DEV\d+/'
-=======
-    - git fetch origin
-    - git checkout -B feature origin/feature
-    #- git remote add Dev http://root:12345678@svrgitlab.com/root/localtest
-    - git pull Dev feature --allow-unrelated-histories
-    - git push Dev feature:feature
->>>>>>> feature
   tags:
     - dish2
 
