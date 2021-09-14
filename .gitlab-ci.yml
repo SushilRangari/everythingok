@@ -14,7 +14,7 @@ syntax_checker:
     - if [ $FAILED ]; then echo "Files having syntax errors";fi
     - cat /home/gitlab-runner/syntax_checker/output.txt
   rules:
-    - if: '$CI_COMMIT_TAG =~ /^\d+\.\d+\.DEV01/'
+    - if: '$CI_COMMIT_TAG =~ /^\d+\.\d+\.DEV\d+/'
   tags:
     - dish2
 code_audit:
@@ -31,7 +31,7 @@ code_audit:
     - if [ $SIZE -eq $VALUE ]; then echo "Code Audit PASSED"; else COUNT=`cat /home/gitlab-runner/error_files.txt  | grep "ERRORS" | awk '{print $2}' | awk '{Total=Total+$1} END{print Total}'`; fi;
     - echo "Code Audit Failed with $COUNT number of Errors"
   rules:
-    - if: '$CI_COMMIT_TAG =~ /^\d+\.\d+\.DEV01/'
+    - if: '$CI_COMMIT_TAG =~ /^\d+\.\d+\.DEV\d+/'
   tags:
     - dish2
 
@@ -46,6 +46,6 @@ Unit_test:
     - sed '2,4d' /home/gitlab-runner/unit-testing/sed_command_to_remove_uwnated_characters.txt > /home/gitlab-runner/unit-testing/sed_command_to_remove_top2_4lines.txt
     - echo "Unit Test Details Sent to Dev Team"
   rules:
-    - if: '$CI_COMMIT_TAG =~ /^\d+\.\d+\.DEV01/'
+    - if: '$CI_COMMIT_TAG =~ /^\d+\.\d+\.DEV\d+/'
   tags:
     - dish2
