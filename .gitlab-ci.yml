@@ -1,7 +1,7 @@
 stages:
  - syntaxchecker
  - codeaudit
- - unittest
+ - Deploy
 
 syntax_checker:
   stage: syntaxchecker
@@ -17,6 +17,7 @@ syntax_checker:
     - if: '$CI_COMMIT_TAG =~ /^\d+\.\d+\.DEV\d+/'
   tags:
     - dish2
+
 code_audit:
   stage: codeaudit
   variables:
@@ -27,25 +28,37 @@ code_audit:
     - /home/gitlab-runner/magento-coding-standard/vendor/bin/phpcs --standard=Magento2 /home/gitlab-runner/code-review/ > /home/gitlab-runner/error_files.txt || FAILED=true
     - if [ $FAILED ]; then sed 's/ \+/,/g' /home/gitlab-runner/error_files.txt > /home/gitlab-runner/error.csv; fi
     - VALUE=0
-    - SIZE=`du -s /home/gitlab-runner/error_files.txt | awk '{print $1}'`;
-    - if [ $SIZE -eq $VALUE ]; then echo "Code Audit PASSED"; else COUNT=`cat /home/gitlab-runner/error_files.txt  | grep "ERRORS" | awk '{print $2}' | awk '{Total=Total+$1} END{print Total}'`; fi;
-    - echo "Code Audit Failed with $COUNT number of Errors"
+    #- SIZE=`du -s /home/gitlab-runner/error_files.txt | awk '{print $1}'`;
+    #- if [ $SIZE -eq $VALUE ]; then echo "Code Audit PASSED"; else COUNT=`cat /home/gitlab-runner/error_files.txt  | grep "ERRORS" | awk '{print $2}' | awk '{Total=Total+$1} END{print Total}'`; fi;
+    #- echo "Code Audit Failed with $COUNT number of Errors"
   rules:
     - if: '$CI_COMMIT_TAG =~ /^\d+\.\d+\.DEV\d+/'
   tags:
     - dish2
 
-Unit_test:
-  stage: unittest
-  variables:
-    GIT_STRATEGY: none
+
+Deployment:
+  stage: Deploy
   script:
-    - /bin/cp /home/gitlab-runner/unit-testing/phpunit.xml /home/data/a7zj6USY/0/root/deployment/dev/tests/unit/phpunit.xml
-    - /home/data/a7zj6USY/0/root/deployment/vendor/bin/phpunit -c /home/data/a7zj6USY/0/root/deployment/dev/tests/unit/phpunit.xml > /home/gitlab-runner/unit-testing/testdata.txt || FAILED=true
-    - if [ $FAILED ]; then sed '/^\./d' /home/gitlab-runner/unit-testing/testdata.txt > /home/gitlab-runner/unit-testing/sed_command_to_remove_uwnated_characters.txt;fi
-    - sed '2,4d' /home/gitlab-runner/unit-testing/sed_command_to_remove_uwnated_characters.txt > /home/gitlab-runner/unit-testing/sed_command_to_remove_top2_4lines.txt
-    - echo "Unit Test Details Sent to Dev Team"
+    - echo "Deploying code "Magento Coding Standards""
   rules:
     - if: '$CI_COMMIT_TAG =~ /^\d+\.\d+\.DEV\d+/'
   tags:
     - dish2
+
+#Unit_test:
+  #stage: unittest
+  #variables:
+    #GIT_STRATEGY: none
+  #script:
+    #- /bin/cp /home/gitlab-runner/unit-testing/phpunit.xml /home/data/a7zj6USY/0/root/deployment/dev/tests/unit/phpunit.xml
+    #- /home/data/a7zj6USY/0/root/deployment/vendor/bin/phpunit -c /home/data/a7zj6USY/0/root/deployment/dev/tests/unit/phpunit.xml > /home/gitlab-runner/unit-testing/testdata.txt || FAILED=true
+    #- if [ $FAILED ]; then sed '/^\./d' /home/gitlab-runner/unit-testing/testdata.txt > /home/gitlab-runner/unit-testing/sed_command_to_remove_uwnated_characters.txt;fi
+    #- sed '2,4d' /home/gitlab-runner/unit-testing/sed_command_to_remove_uwnated_characters.txt > /home/gitlab-runner/unit-testing/sed_command_to_remove_top2_4lines.txt
+    #- echo "Unit Test Details Sent to Dev Team"
+  #rules:
+    #- if: '$CI_COMMIT_TAG =~ /^\d+\.\d+\.DEV\d+/'
+  #tags:
+    #- dish2
+
+
