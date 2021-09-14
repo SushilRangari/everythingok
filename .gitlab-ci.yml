@@ -6,7 +6,6 @@ Deploy:
   script:
     - git fetch origin
     - git checkout -B release2
-    - git remote add mcloud git@github.com:SushilRangari/everythingok.git
     - git push mcloud release2:release2
   #rules:
     #- if: '$CI_COMMIT_TAG =~ /^\d+\.\d+\.DEV\d+/'
