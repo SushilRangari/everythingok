@@ -5,7 +5,7 @@ Deploy:
   stage: Deploy
   script:
     - git fetch origin
-    - git checkout -B release2 origin/release2
+    - git checkout -B release2
     - git remote add mcloud git@github.com:SushilRangari/everythingok.git
     - git push mcloud release2:release2
   #rules:
