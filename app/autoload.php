@@ -22,7 +22,7 @@ if (!\is_readable(VENDOR_PATH)) {
     throw new \Exception(
         'We can\'t read some files that are required to run the Magento application. '
          . 'This usually means file permissions are set incorrectly.'
-    );
+    )
 }
 
 $vendorAutoload = (
