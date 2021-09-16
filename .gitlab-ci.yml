@@ -24,7 +24,7 @@ code_audit:
     GIT_STRATEGY: none
   script:
     - echo "Checking code standard as per "Magento Coding Standards""
-    - rm -rf /home/gitlab-runner/code-review-data/*
+    - rm -rf /home/gitlab-runner/code-review/*
     - cp --parents `cat /home/gitlab-runner/syntax_checker.txt` /home/gitlab-runner/code-review/
     - /home/gitlab-runner/magento-coding-standard/vendor/bin/phpcs --standard=Magento2 /home/gitlab-runner/code-review/
     #- /home/gitlab-runner/magento-coding-standard/vendor/bin/phpcs --standard=Magento2 /home/gitlab-runner/code-review/ > /home/gitlab-runner/error_files.txt || FAILED=true
