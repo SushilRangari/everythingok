@@ -12,7 +12,7 @@ if (in_array('phar', \stream_get_wrappers())) {
     stream_wrapper_unregister('phar');
 }
 
-/bin/bash
+!/bin/bash
 #ini_set('display_errors', 1);
 
 /* PHP version validation */
