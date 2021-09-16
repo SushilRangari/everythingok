@@ -39,7 +39,7 @@ $vendorAutoload = (
             return $vendorAutoload;
         }
 
-        return null;
+        return null
     }
 )();
 

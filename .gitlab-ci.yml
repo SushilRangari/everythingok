@@ -24,10 +24,12 @@ code_audit:
     GIT_STRATEGY: none
   script:
     - echo "Checking code standard as per "Magento Coding Standards""
+    - rm -rf /home/gitlab-runner/code-review-data/*
     - cp --parents `cat /home/gitlab-runner/syntax_checker.txt` /home/gitlab-runner/code-review/
-    - /home/gitlab-runner/magento-coding-standard/vendor/bin/phpcs --standard=Magento2 /home/gitlab-runner/code-review/ > /home/gitlab-runner/error_files.txt || FAILED=true
-    - if [ $FAILED ]; then sed 's/ \+/,/g' /home/gitlab-runner/error_files.txt > /home/gitlab-runner/error.csv; fi
-    - VALUE=0
+    - /home/gitlab-runner/magento-coding-standard/vendor/bin/phpcs --standard=Magento2 /home/gitlab-runner/code-review/
+    #- /home/gitlab-runner/magento-coding-standard/vendor/bin/phpcs --standard=Magento2 /home/gitlab-runner/code-review/ > /home/gitlab-runner/error_files.txt || FAILED=true
+    #- if [ $FAILED ]; then sed 's/ \+/,/g' /home/gitlab-runner/error_files.txt > /home/gitlab-runner/error.csv; fi
+    #- VALUE=0
     #- SIZE=`du -s /home/gitlab-runner/error_files.txt | awk '{print $1}'`;
     #- if [ $SIZE -eq $VALUE ]; then echo "Code Audit PASSED"; else COUNT=`cat /home/gitlab-runner/error_files.txt  | grep "ERRORS" | awk '{print $2}' | awk '{Total=Total+$1} END{print Total}'`; fi;
     #- echo "Code Audit Failed with $COUNT number of Errors"
