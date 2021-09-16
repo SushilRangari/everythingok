@@ -24,7 +24,7 @@ if (!\is_readable(VENDOR_PATH)) {
          . 'This usually means file permissions are set incorrectly.'
     )
 }
-
+;
 $vendorAutoload = (
     static function (): ?string {
         $vendorDir = require VENDOR_PATH;
