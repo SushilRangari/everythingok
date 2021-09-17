@@ -8,6 +8,7 @@ Deploy:
     - git fetch origin
     #- git pull mcloud release2
     - git checkout -B release2
+    - git pull origin release2
     - git remote set-url mcloud git@github.com:SushilRangari/everythingok.git
     - git push mcloud release2:release2
   rules:
